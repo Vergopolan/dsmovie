@@ -12,20 +12,23 @@ import com.devsuperior.dsmovie.dto.MovieDTO;
 import com.devsuperior.dsmovie.services.MovieService;
 
 @RestController
-@RequestMapping(value = "/movies")
+@RequestMapping(value ="/movies")
 public class MovieController {
 	
 	@Autowired
 	private MovieService service;
 	
 	@GetMapping
-	public Page<MovieDTO> findAll(Pageable pageable){
+	public Page<MovieDTO> findAll(Pageable pageable) {
 		return service.findAll(pageable);
+		
 	}
 	
-	@GetMapping(value = "/{id}" )
-	public MovieDTO findById(@PathVariable Long id){
+	// Parâmeto de URL no Spring
+	
+	@GetMapping(value ="/{id}")
+	public MovieDTO findById(@PathVariable Long id) {
 		return service.findById(id);
+		
 	}
-	
 }

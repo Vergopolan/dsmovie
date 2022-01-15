@@ -11,25 +11,31 @@ import com.devsuperior.dsmovie.entities.Movie;
 import com.devsuperior.dsmovie.repositories.MovieRepository;
 
 @Service
+
 public class MovieService {
-	
+	/*
+	 * O framework já tem uma ferramenta para instanciar o objeto // É apenas
+	 * necessário a declaração da composição do componenme e incluir o @Autowired
+	 */
+
 	@Autowired
 	private MovieRepository repository;
-	
+
 	@Transactional(readOnly = true)
 	public Page<MovieDTO> findAll(Pageable pageable) {
+
 		Page<Movie> result = repository.findAll(pageable);
+		// Convertendo a pagina da entidade Movie para DTO
 		Page<MovieDTO> page = result.map(x -> new MovieDTO(x));
+		// Retornando a converção
 		return page;
 	}
-		
+
 	@Transactional(readOnly = true)
 	public MovieDTO findById(Long id) {
 		Movie result = repository.findById(id).get();
 		MovieDTO dto = new MovieDTO(result);
 		return dto;
-		
-		
 	}
 
 }

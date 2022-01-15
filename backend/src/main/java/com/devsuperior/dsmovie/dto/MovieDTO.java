@@ -3,7 +3,6 @@ package com.devsuperior.dsmovie.dto;
 import com.devsuperior.dsmovie.entities.Movie;
 
 public class MovieDTO {
-	
 	private Long id;
 	private String title;
 	private Double score;
@@ -15,6 +14,7 @@ public class MovieDTO {
 	}
 
 	public MovieDTO(Long id, String title, Double score, Integer count, String image) {
+		
 		this.id = id;
 		this.title = title;
 		this.score = score;
@@ -22,54 +22,55 @@ public class MovieDTO {
 		this.image = image;
 	}
 	
-	public MovieDTO(Movie movie) {
+	
+public MovieDTO(Movie movie) {
+		
 		id = movie.getId();
-		title = movie.getTitle();
+		title = movie.getTitles();
 		score = movie.getScore();
 		count = movie.getCount();
 		image = movie.getImage();
 	}
 
-	public Long getId() {
-		return id;
-	}
+public Long getId() {
+	return id;
+}
 
-	public void setId(Long id) {
-		this.id = id;
-	}
+public void setId(Long id) {
+	this.id = id;
+}
 
-	public String getTitle() {
-		return title;
-	}
+public String getTitle() {
+	return title;
+}
 
-	public void setTitle(String title) {
-		this.title = title;
-	}
+public void setTitle(String title) {
+	this.title = title;
+}
 
-	public Double getScore() {
-		return score;
-	}
+public Double getScore() {
+	return score;
+}
 
-	public void setScore(Double score) {
-		this.score = score;
-	}
+public void setScore(Double score) {
+	this.score = score;
+}
 
-	public Integer getCount() {
-		return count;
-	}
+public Integer getCount() {
+	return count;
+}
 
-	public void setCount(Integer count) {
-		this.count = count;
-	}
+public void setCount(Integer count) {
+	this.count = count;
+}
 
-	public String getImage() {
-		return image;
-	}
+public String getImage() {
+	return image;
+}
 
-	public void setImage(String image) {
-		this.image = image;
-	}
+public void setImage(String image) {
+	this.image = image;
+}
+
 	
-	
-
 }

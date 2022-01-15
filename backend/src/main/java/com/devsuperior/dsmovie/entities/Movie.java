@@ -1,9 +1,13 @@
 package com.devsuperior.dsmovie.entities;
 
+import java.util.HashSet;
+import java.util.Set;
+
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
 @Entity
@@ -11,21 +15,23 @@ import javax.persistence.Table;
 public class Movie {
 	
 	@Id
-	@GeneratedValue(strategy = GenerationType.IDENTITY )
-	
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long id;
 	private String title;
 	private Double score;
 	private Integer count;
 	private String image;
 	
+	@OneToMany(mappedBy = "id.movie")
+	private Set<Score> scores = new HashSet<>();
+
 	public Movie() {
 		
 	}
 
-	public Movie(Long id, String title, Double score, Integer count, String image) {
-		this.id = id;
-		this.title = title;
+	public Movie(Long id, String titles, Double score, Integer count, String image) {
+				this.id = id;
+		this.title = titles;
 		this.score = score;
 		this.count = count;
 		this.image = image;
@@ -39,11 +45,11 @@ public class Movie {
 		this.id = id;
 	}
 
-	public String getTitle() {
+	public String getTitles() {
 		return title;
 	}
 
-	public void setTitle(String title) {
+	public void setTitles(String title) {
 		this.title = title;
 	}
 
@@ -70,6 +76,12 @@ public class Movie {
 	public void setImage(String image) {
 		this.image = image;
 	}
+
+	// Método q acessa a coleção das notas do filme 
+	public Set<Score> getScores() {
+		return scores;
+	}
+	
 	
 	
 }
